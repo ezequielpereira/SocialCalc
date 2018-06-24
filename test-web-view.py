@@ -1,5 +1,5 @@
 import os
-import gtk
+import Gtk
 import time
 import hulahop
 hulahop.startup(os.path.expanduser('~/.test-hulahop'))
@@ -32,14 +32,14 @@ def keypress(window, event):
 # Shut down our app
 def quit(window):
 #    hulahop.shutdown()
-    gtk.main_quit()
+    Gtk.main_quit()
 
 # Create our GTK window containing the embedded browser, and hook up some handlers
-window = gtk.Window()
+window = Gtk.Window()
 window.set_default_size(600, 400)
 window.connect("destroy", quit)
 window.connect("key_press_event", keypress)
 
 window.add( xocom.create_webview() )
 window.show()
-gtk.main()
+Gtk.main()
