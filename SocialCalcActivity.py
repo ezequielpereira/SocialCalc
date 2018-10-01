@@ -5,7 +5,7 @@ import logging
 import telepathy
 
 from gi.repository import Gtk
-from gi.repository import GObject
+from gi.repository import GLib
 from gi.repository import WebKit
 
 from dbus.service import method, signal
@@ -89,7 +89,7 @@ class SocialCalcActivity (activity.Activity):
 
         #calling to initialize strings in localization
         #should wait for init complete from browser
-        GObject.timeout_add(4000, self.xocom.send_to_browser_localize,['initlocalize'])
+        GLib.timeout_add(4000, self.xocom.send_to_browser_localize,['initlocalize'])
 
 
     def _shared_cb(self, activity):
@@ -254,7 +254,7 @@ class SocialCalcActivity (activity.Activity):
         # We must delay this to give the browser time to start up
         # It would be better if this send_to_browser was instead triggered
         # once the browser had finished loading.
-        GObject.timeout_add(5000, send_delayed_read)
+        GLib.timeout_add(5000, send_delayed_read)
 
         
     def write_shared(self):
